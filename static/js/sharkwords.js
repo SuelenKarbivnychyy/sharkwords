@@ -55,12 +55,17 @@ const disableLetterButton = (buttonEl) => {
 const isLetterInWord = (letter, word) => {
 
   if (word.includes(letter)) {
-    handleCorrectGuess(letter);  
+    // handleCorrectGuess(letter);
+    return true; 
   } else {
     return false;
   }
 
 };
+
+const handleWrongGuess = (letter, word) => {
+  pass;
+}
 
 
 
@@ -69,13 +74,29 @@ const isLetterInWord = (letter, word) => {
   const word = WORDS[Math.floor(Math.random() * WORDS.length)];
  
 
-  createDivsForChars(word);
+  const wordToGuess = createDivsForChars(word);
 
   const buttons = generateLetterButtons();
 
-  // for (letter of buttons) {
+  const buttonsLetters = document.querySelectorAll('button');
 
-  // }
+  for (const button of buttonsLetters) {
+    // console.log(button)     
+    button.addEventListener('click', () => {
+      const letter = button.innerHTML;
+      disableLetterButton(button);
+      if (isLetterInWord(letter, wordToGuess)) {
+        handleCorrectGuess;
+      } else {
+        handleWrongGuess;
+      }
+    });      
+  }
+  
+    
+   
+      // button.addEventListener('click',(disableLetterButton))
+  
 
   // in the next lab, you will be adding functionality to handle when
   // someone clicks on a letter
